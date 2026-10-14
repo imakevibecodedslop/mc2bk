@@ -1,0 +1,53 @@
+*.d
+*.o
+*.elf
+*.bin
+*.exe
+*.dll
+*.lib
+*.pdb
+*.exp
+./funcs.h
+patches.map
+build/
+.vscode/settings.json
+
+# --- game data: never commit any of this ---
+# roms
+*.z64
+*.n64
+*.v64
+*.rom
+# minecraft jars / extracted assets
+*.jar
+mc_assets/
+# anything generated from game data (exporter output, extracted textures, block data)
+generated/
+*.mcblocks
+
+# local tools people drop in the repo root
+RecompModTool
+RecompModTool.exe
+N64Recomp
+N64Recomp.exe
+dump.toml
+data_dump.toml
+
+# built mods / native libraries (they contain data from your minecraft jar: build them yourself)
+*.nrm
+*.so
+mc_sounds/
+*.pcm
+mc_skin.png
+
+# python
+__pycache__/
+*.pyc
+
+# claude code (local assistant notes and settings)
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+
+# release staging (make the zips here, upload them by hand)
+release/

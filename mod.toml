@@ -1,0 +1,135 @@
+# minecraft in banjo-kazooie, a banjo: recompiled mod.
+
+# Fields that end up in the mod's manifest.
+[manifest]
+
+# Unique ID of this mod. Pick something long enough that it'll never be the same as any other mod.
+# The name displayed in the mod management menu is separate from this, but this should still be human readable
+# as it will show up in missing dependency errors.
+id = "bk_minecraft_steve_mod"
+
+# Version of this mod.
+version = "0.1.0"
+
+# The name that will show up for this mod in the mod menu. This should be human readable.
+display_name = "Minecraft in Banjo-Kazooie"
+
+# The description that will show up when this mod is displayed in the mod menu. This should be human readable.
+description = """\
+play banjo-kazooie as steve: minecraft movement, combat, survival, blocks, mining, crafting and sounds, \
+inside bk's real levels, and you can still finish the game. d-pad up turns banjo into steve. \
+install "Minecraft in BK: Mouse" too for mouse + keyboard, sounds and custom skins."""
+
+# A short description that will show up in this mod's entry in the mod list. This should be human readable and kept short
+# to prevent it from being cut off due to the limited space.
+short_description = "play banjo-kazooie as minecraft's steve."
+
+# Authors of this mod.
+authors = [ "imakevibecodedslop" ]
+
+# ID of the target recomp game.
+game_id = "bk"
+
+# Minimum version of the target recomp (e.g. Banjo-Kazooie: Recompiled) that this mod can run on.
+minimum_recomp_version = "0.0.1"
+
+# Dependency mods. Each entry is the mod's ID and then an optional minimum version of the dependency mod.
+dependencies = [
+# Example dependency:
+#    "modname:1.0.0"
+]
+
+# Optional dependency mods. This has the same format as `dependencies`, but the game will still start if dependencies in this
+# list aren't present. You can query the presence of a given dependency by using `recomp_is_dependency_met` in recomputils.h.
+# Calling a function imported from an optional dependency that isn't present will trigger an error.
+optional_dependencies = [
+    # mouse + keyboard companion mod (mouse/ in this repo)
+    "bk_minecraft_mouse"
+]
+
+# Native libraries (e.g. DLLs) and the functions they export.
+native_libraries = [
+# Example native library:
+#    { name = "my_native_library", funcs = ["my_native_library_function"] }
+]
+
+# Inputs to the mod tool.
+[inputs]
+
+# Input elf file to generate a mod from.
+elf_path = "build/mod.elf"
+
+# Output mod filename.
+mod_filename = "bk_minecraft_steve_mod"
+
+# Reference symbol files.
+func_reference_syms_file = "BanjoRecompSyms/bk.us.rev0.syms.toml"
+data_reference_syms_files = [ "BanjoRecompSyms/bk.us.rev0.datasyms.toml" ]
+
+# Additional files to include in the mod.
+additional_files = [ ]
+
+# mod options (the mod menu's config page)
+[[manifest.config_options]]
+id = "starter_kit"
+name = "Starter Kit"
+description = "A brand new save starts with stone tools, bread, torches and a crafting table."
+type = "Enum"
+options = [ "Off", "On" ]
+default = "On"
+
+[[manifest.config_options]]
+id = "keep_terrain"
+name = "Keep Broken Terrain"
+description = "Holes you dig or blow up and trees you cut stay in the world (saved with the game). Off: the ground grows back when a map reloads."
+type = "Enum"
+options = [ "Off", "On" ]
+default = "On"
+
+[[manifest.config_options]]
+id = "ore_heights"
+name = "Ore Depth"
+description = "Minecraft: ores at their real heights, counting the top of bk's ground as y 63 (iron and coal near the top, diamonds about 50 blocks down). Shallow: everything 4x closer to the surface with a quarter of the veins, so there's as much ore per block as in Minecraft (diamonds about 12 blocks down)."
+type = "Enum"
+options = [ "Minecraft", "Shallow" ]
+default = "Minecraft"
+
+[[manifest.config_options]]
+id = "toggle_sprint"
+name = "Sprint"
+description = "Minecraft's Controls > Sprint: Hold, or Toggle (press once to sprint, again to stop)."
+type = "Enum"
+options = [ "Hold", "Toggle" ]
+default = "Hold"
+
+[[manifest.config_options]]
+id = "fov"
+name = "FOV"
+description = "Minecraft's field of view setting (Normal = 70). The hand always uses 70, like Minecraft."
+type = "Number"
+min = 30
+max = 110
+step = 1
+precision = 0
+percent = false
+default = 70
+
+[[manifest.config_options]]
+id = "skin_model"
+name = "Skin Model"
+description = "Your skin's arms: Classic (Steve, 4 pixels wide) or Slim (Alex, 3 pixels). Put your own skin, a 64x64 or old 64x32 Minecraft skin PNG, at ~/.config/BanjoRecompiled/mc_skin.png (needs the mouse companion mod). It's picked up within a second, also while playing; delete it to go back to Steve."
+type = "Enum"
+options = [ "Classic", "Slim" ]
+default = "Classic"
+
+[[manifest.config_options]]
+id = "mc_sound_volume"
+name = "Minecraft Sounds"
+description = "Minecraft's Master Volume for the mod's minecraft sounds (blocks, steps, hurting, eating, toasts...). bk's own sounds and music aren't changed. The sounds come from your Minecraft install (see the README) and play through the mouse companion mod."
+type = "Number"
+min = 0
+max = 100
+step = 1
+precision = 0
+percent = true
+default = 100

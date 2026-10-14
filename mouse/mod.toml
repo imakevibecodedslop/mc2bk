@@ -1,0 +1,30 @@
+# mouse + keyboard companion for the minecraft in banjo-kazooie mod.
+# linux only for now: it ships a native .so that has to sit next to the .nrm
+# in the mods folder.
+
+[manifest]
+id = "bk_minecraft_mouse"
+version = "0.1.0"
+display_name = "Minecraft in BK: Mouse"
+description = """\
+mouse look, mouse buttons, scroll wheel and minecraft keys for the minecraft in banjo-kazooie mod. \
+esc frees or locks the mouse. needs mc_mouse_native.so next to this file in the mods folder (linux)."""
+short_description = "mouse + keyboard for minecraft in bk (linux)."
+authors = [ "imakevibecodedslop" ]
+game_id = "bk"
+minimum_recomp_version = "0.0.1"
+dependencies = [ ]
+optional_dependencies = [ ]
+
+native_libraries = [
+    { name = "mc_mouse_native", funcs = [ "mcm_poll", "mcm_take_dx", "mcm_take_dy", "mcm_take_clicks", "mcm_take_wheel", "mcm_key", "mcm_buttons", "mcm_window_size", "mcm_cursor",
+        "mcm_save_begin", "mcm_save_put", "mcm_save_commit", "mcm_load_open", "mcm_load_get", "mcm_save_delete",
+        "mcm_snd_play", "mcm_snd_stop_all", "mcm_skin_poll", "mcm_skin_px" ] }
+]
+
+[inputs]
+elf_path = "build/mod.elf"
+mod_filename = "bk_minecraft_mouse"
+func_reference_syms_file = "../BanjoRecompSyms/bk.us.rev0.syms.toml"
+data_reference_syms_files = [ "../BanjoRecompSyms/bk.us.rev0.datasyms.toml" ]
+additional_files = [ ]

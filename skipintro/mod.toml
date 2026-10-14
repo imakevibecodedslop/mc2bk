@@ -1,0 +1,24 @@
+# skip intro: boot banjo: recompiled straight to the file select screen.
+# standalone, works with or without the minecraft mod.
+
+[manifest]
+id = "bk_skip_intro"
+version = "0.1.0"
+display_name = "Skip Intro"
+description = """\
+boots straight to the file select screen, skipping the rare logo and the intro cutscenes \
+that play before you press start."""
+short_description = "boot straight to the file select."
+authors = [ "imakevibecodedslop" ]
+game_id = "bk"
+minimum_recomp_version = "0.0.1"
+dependencies = [ ]
+optional_dependencies = [ ]
+native_libraries = [ ]
+
+[inputs]
+elf_path = "build/mod.elf"
+mod_filename = "bk_skip_intro"
+func_reference_syms_file = "../BanjoRecompSyms/bk.us.rev0.syms.toml"
+data_reference_syms_files = [ "../BanjoRecompSyms/bk.us.rev0.datasyms.toml" ]
+additional_files = [ ]
